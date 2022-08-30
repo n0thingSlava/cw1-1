@@ -23,7 +23,7 @@ public class Employee {
     }
     @Override
     public String toString() {
-        return "Id: " + Id + " Fio: " + FIO + " Dept: " + Department + " Salary: " + Salary;
+        return "№: " + Id + " ФИО: " + FIO + " Отдел: " + Department + " ЗП: " + Salary;
 
     }
 
