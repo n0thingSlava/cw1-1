@@ -1,74 +1,59 @@
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.stream.Collectors;
+
 public class Employee {
-    private String FIO;
-    private int Department;
-    private float Salary;
-    private int Id;
-    private static int Counter;
-    public String getFIO() {
-        return FIO;
+    public int Department; //отдел
+    public String Fcs; //фио
+    public int Salary; //зп
+    public int Id;//Порядковый номер
+    public static int Counter;
+
+    public Employee(int Department, String Fcs, int Salary) {
+        this.Department = Department;
+        this.Fcs = Fcs;
+        this.Salary = Salary;
+        Id = ++Counter;
     }
 
-    public void setFIO(String FIO) {
-        this.FIO = FIO;
-    }
 
     public int getDepartment() {
         return Department;
     }
 
-    public void setDepartment(int department) {
-        Department = department;
-    }
-
-    public float getSalary() {
+    public int getSalary() {
         return Salary;
     }
 
-    public void setSalary(float salary) {
-        Salary = salary;
-    }
-
-    public int getId() {
-        return Id;
-    }
-
-    public Employee(String fio, int dept, float salary) {
-        FIO = fio;
-        Department = dept;
-        Salary = salary;
-        Id = ++Counter;
-    }
 
     @Override
     public String toString() {
-        return "№: " + Id + " ФИО: " + FIO + " Отдел: " + Department + " ЗП: " + Salary;
+        return "№: " + Id + " ФИО: " + Fcs + " Отдел: " + Department + " ЗП: " + Salary;
 
     }
 
     public static void main(String[] args) {
-        Employee[] empl = new Employee[10];
-        empl[0] = new Employee("Ivanov Ivan Ivanovich1", 1, 75500f);
-        empl[1] = new Employee("Ivanov Ivan Ivanovich2", 2, 83450f);
-        empl[2] = new Employee("Ivanov Ivan Ivanovich3", 3, 71200f);
-        empl[3] = new Employee("Ivanov Ivan Ivanovich4", 4, 90200f);
-        empl[4] = new Employee("Ivanov Ivan Ivanovich5", 5, 94200f);
-        empl[5] = new Employee("Ivanov Ivan Ivanovich5", 1, 95300f);
-        empl[6] = new Employee("Ivanov Ivan Ivanovich5", 2, 96400f);
-        empl[7] = new Employee("Ivanov Ivan Ivanovich5", 3, 97500f);
-        empl[8] = new Employee("Ivanov Ivan Ivanovich5", 4, 98600f);
-        empl[9] = new Employee("Ivanov Ivan Ivanovich10", 5, 99700f);
+        Employee[] employee = new Employee[10];
 
-        for (Employee e : empl) {
+        employee[0] = new Employee(1, ".bobych..", 1000); // и таких ровно 10
+        employee[1] = new Employee(1, ".natanich.", 2000);
+        employee[2] = new Employee(1, "..fekin.", 3000);
+        employee[3] = new Employee(1, "...gorochov", 4000);
+        employee[4] = new Employee(1, "...ivanov", 4000);
+        employee[5] = new Employee(1, "...petrov", 4000);
+        employee[6] = new Employee(1, "...nikolaev.", 4000);
+        employee[7] = new Employee(1, "..pavluchenko.", 6000);
+        employee[8] = new Employee(1, "...umarbaev", 4000);
+        employee[9] = new Employee(1, "...davinchi", 5000);
+
+            IntSummaryStatistics result = Arrays.stream(employee).collect(Collectors.summarizingInt(Employee::getSalary));
+            System.out.println("Сумма затрат"+ result.getSum());
+            System.out.println("Минимальная ЗП"+ result.getMin());
+            System.out.println("Максимальная ЗП" +result.getMax());
+            System.out.println(result.getAverage());
+        for (Employee e : employee) {
             System.out.println(e);
         }
     }
-    public static void calculateSum(int[] empl) {
-        int sum = 0;
-        for (int i : empl) {
-            sum += i;
-        }
-    System.out.println("Сумма элементов массива: " + sum);
-    }
 
-    }
-
+}
