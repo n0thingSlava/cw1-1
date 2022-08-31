@@ -2,9 +2,8 @@ public class Employee {
     private String FIO;
     private int Department;
     private float Salary;
-
     private int Id;
-
+    private static int Counter;
     public String getFIO() {
         return FIO;
     }
@@ -37,8 +36,7 @@ public class Employee {
         FIO = fio;
         Department = dept;
         Salary = salary;
-        Id++;
-
+        Id = ++Counter;
     }
 
     @Override
@@ -64,13 +62,13 @@ public class Employee {
             System.out.println(e);
         }
     }
-    public static float getMinSalary() {
+    public static void calculateSum(int[] empl) {
         int sum = 0;
-        for (int i = 0; i < empl.length - 1; i++) {
-            sum += empl[i];
+        for (int i : empl) {
+            sum += i;
         }
-        System.out.println("сумма трат за месяц " + sum + " рублей");
-        System.out.println();
+    System.out.println("Сумма элементов массива: " + sum);
+    }
 
     }
-}
+
