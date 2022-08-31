@@ -31,7 +31,9 @@ public class Employee {
         return "№: " + Id + " ФИО: " + Fcs + " Отдел: " + Department + " ЗП: " + Salary;
     }
 
-    public static Employee[] employee = new Employee[10]; {
+    public class Main {
+
+        public static void main(String[] args) {
             Employee[] employee = new Employee[10];
 
             employee[0] = new Employee(1, "Рудольф", 1000); // и таких ровно 10
@@ -55,6 +57,7 @@ public class Employee {
             }
         }
     }
+}
 
 
 
