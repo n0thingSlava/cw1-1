@@ -31,20 +31,22 @@ public class Employee {
 
     public int getId() {
         return Id;
-}
+    }
 
     public Employee(String fio, int dept, float salary) {
         FIO = fio;
         Department = dept;
         Salary = salary;
-        Id ++;
+        Id++;
 
     }
+
     @Override
     public String toString() {
         return "№: " + Id + " ФИО: " + FIO + " Отдел: " + Department + " ЗП: " + Salary;
 
     }
+
     public static void main(String[] args) {
         Employee[] empl = new Employee[10];
         empl[0] = new Employee("Ivanov Ivan Ivanovich1", 1, 75500f);
@@ -62,5 +64,13 @@ public class Employee {
             System.out.println(e);
         }
     }
+    public static float getMinSalary() {
+        int sum = 0;
+        for (int i = 0; i < empl.length - 1; i++) {
+            sum += empl[i];
+        }
+        System.out.println("сумма трат за месяц " + sum + " рублей");
+        System.out.println();
 
+    }
 }
